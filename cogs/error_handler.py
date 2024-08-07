@@ -46,5 +46,5 @@ class ERROR(commands.Cog):
         raise RuntimeError("This is a simulated error.")
 
 async def setup(bot: commands.Bot):
-    error_channel_id = 1270579451398459402
+    error_channel_id = 1270773055718686824
     await bot.add_cog(ERROR(bot, error_channel_id))
