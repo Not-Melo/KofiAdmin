@@ -26,6 +26,17 @@ class NicknameChecker(commands.Cog):
             default_nickname = f"[Change Nickname]"
             await member.edit(nick=default_nickname)
             await channel.send(f"Your nickname has been changed to {default_nickname} because your username contains non-English or non-standard characters.")
+    
+    @commands.Cog.listener()
+    async def on_member_update(self, before, after, member):
+        if before.nick != after.nick:
+            if not self.is_default_font(after.name) or not self.is_english(after.name):
+                channel = self.bot.get_channel(1269607515952382002)
+                default_nickname = f"[Change Nickname]"
+                await member.edit(nick=default_nickname)
+                await channel.send(f"Your nickname has been changed to {default_nickname} because your username contains non-English or non-standard characters.")
+
+            
 
 async def setup(bot):
     await bot.add_cog(NicknameChecker(bot))
