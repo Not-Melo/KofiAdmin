@@ -34,7 +34,12 @@ async def load_cogs():
 
 # Bot status cycle
 status = cycle([
-    "Test"
+    "Serving Coffee ☕",
+    "Unloading beanbags",
+    "Heating the oven",
+    "Getting milk",
+    "\"I'm never returning\" - ur dad",
+    "Stomping the goblins"
 ])
 
 
