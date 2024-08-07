@@ -22,8 +22,7 @@ class NicknameChecker(commands.Cog):
         """
         Check if the text contains only English letters, digits, spaces, hyphens, and underscores.
         """
-        pattern = r'^[A-Za-z0-9 _\-!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~]+$'
-        return bool(re.match(pattern, text))
+        return bool(re.match(r'^[A-Za-z0-9 _\-]+$', text))
 
     async def notify_user(self, member, message):
         """
@@ -79,7 +78,6 @@ class NicknameChecker(commands.Cog):
         if after.nick and after.nick != before.nick:
             if after.id not in self.last_nickname or self.last_nickname[after.id] != after.nick:
                 await self.handle_nickname_change(after, after.nick)
-    
 
 async def setup(bot):
     await bot.add_cog(NicknameChecker(bot))
